@@ -1,0 +1,32 @@
+{
+	"name": "pmonp",
+	"version": "0.1.2",
+	"description": "Present<on parser for Node.js",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/lucaslg26/pmonp.git"
+	},
+	"keywords": [
+    "PresentMon",
+    "parser",
+    "csv",
+    "json"
+  ],
+	"author": "Lucas Vasconcelos",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/lucaslg26/pmonp/issues"
+	},
+	"homepage": "https://github.com/lucaslg26/pmonp#readme",
+	"bin": {
+		"pmonp": "./bin/pmonp"
+	},
+	"dependencies": {
+		"csvtojson": "^1.0.3",
+		"formulajs": "^1.0.8"
+	}
+}

@@ -1,0 +1,28 @@
+//Converter Class 
+var Converter = require("csvtojson").Converter;
+var converter = new Converter({});
+var calc = require("formulajs")
+ 
+//end_parsed will be emitted once parsing finished 
+converter.on("end_parsed", function (jsonArray) {
+   //console.log(jsonArray);
+	 var sum = 0;
+	 var msList = [];
+	 jsonArray.forEach((data) => {
+	 		sum += 1000/data.MsBetweenPresents;
+		 	msList.push(1000/data.MsBetweenPresents)
+	 })
+	 
+	 console.log("Jogo: %s", jsonArray[0].Application)
+	 console.log("Número de frames: %s", msList.length)
+	 console.log("Média de frames: %s", sum/msList.length)
+	 console.log("1% LOW: %s", calc.PERCENTILE.EXC(msList, 0.1))
+	 console.log("0.1% LOW: %s", calc.PERCENTILE.EXC(msList, 0.01))
+	 console.log("Tempo de execução: %s", Math.ceil(jsonArray[msList.length-1].TimeInSeconds - jsonArray[0].TimeInSeconds))
+	 
+});
+ 
+//read from file 
+require("fs").createReadStream("./" + process.argv[2]).pipe(converter);
+
+
